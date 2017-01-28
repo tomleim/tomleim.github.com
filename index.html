@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+		
+		<title>Tom Leimkuhler, Berkeley</title>
+
+		<meta name="description" content="Tom Leimkuhler, Berkeley, California"/>
+
+<?php 
+//set initial background image based on hour of day (1-24)
+$i = idate('G')	+ 1;
+$bgimg = "url(bg" . $i .".jpg)";
+?>
+
+<style>	
+	
+	#container { display:block; }
+	
+	body {
+	font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	text-align: left;
+	color: white;
+	margin:0;
+	padding:0;
+	background-color: #000;		
+	}
+	
+	#image_box {
+    height: 0;
+    padding: 0; /* remove any pre-existing padding, just in case */
+    padding-bottom: 75%; /* for a 4:3 aspect ratio */
+    /*
+	background-image: <?=$bgimg?>;
+	*/
+	background-image: url(bg1.jpg);
+    background-position: top center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+	}
+
+	#some_text {
+		padding: 1.2vw 0 0 2.3vw;
+	}
+
+	h1 {
+	font-family:  'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+	font-size: 4.5em;
+	font-size: 4.5vw;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+	line-height: 2vw;
+	text-align: left;
+	color: white;
+	}
+
+	h2 {
+	font-family:  'Helvetica Rounded', Arial, sans-serif;
+	font-size: 3em;
+	font-size: 3vw;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 1.05em;
+	line-height: 3.2vw;
+	text-align: left;
+	color: rgba(255, 255, 121, 0.86);
+	margin-left: 0.3em;
+
+	}
+	
+	
+	@media only screen and (orientation:portrait){
+
+	#container {
+    	height: 100vw;
+    	width: 100vh;
+		-webkit-transform: rotate(90deg);
+		-moz-transform: rotate(90deg);
+		-o-transform: rotate(90deg);
+		-ms-transform: rotate(90deg);
+		transform: rotate(90deg);
+  	}
+  
+  
+  	#image_box {
+    height: 0;
+    padding: 0; /* remove any pre-existing padding, just in case */
+    padding-bottom: 75%; /* for a 4:3 aspect ratio */
+
+    background-position: right top;
+    background-size: 100%;
+    background-repeat: no-repeat;
+	}
+	
+	#some_text {
+		padding: 3vw 0 0 40vw;
+	}
+
+}
+
+	
+</style>
+
+<script type="text/javascript">
+//change background image when user clicks
+	
+var image_count = 26; //total number of background image files	
+	
+function preload_next(i) {
+var next = i + 1;
+if(next === image_count + 1){
+	next = 1;
+}
+var n = next.toString();
+var my_image = new Image();
+my_image.src = 'bg' + n + '.jpg';
+}	
+	
+window.onload = function() {
+
+var myElement = document.querySelector("#image_box");
+
+//initial background image set by php
+//var index = <?=$i?>;
+var index = 1;
+
+preload_next(index); //load next background image into browser cache
+
+myElement.addEventListener('touchend', function(e) {
+  /* on touch devices prevent delay and simulated mouse events */
+  e.preventDefault();
+  /* trigger the actual behavior we bound to the 'click' event */
+  e.target.click();
+})
+myElement.addEventListener('click', function() {
+	index = index + 1;
+	if(index === image_count + 1){  
+    	index = 1;
+	}
+    myElement.style.backgroundImage = "url(bg" + index + ".jpg)";
+    preload_next(index); //load next background image into browser cache
+
+});
+}
+</script>
+	
+</head>
+
+
+<body id="container">
+
+<center>
+<div id="image_box">
+	<div id="some_text">
+		<h1>Tom Leimkuhler</h1>
+		<h2>berkeley, california
+		<br>tomleim<span style="display:none">foo</span>@gma<span style="display:none">foo</span>il.com
+		</h2>
+	</div>
+</div>
+</center>
+</body>
+
+
+</html>
