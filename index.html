@@ -27,6 +27,7 @@
 	background-position: top center;
     background-size: 100%;
     background-repeat: no-repeat;
+    background-image: url(bg.jpg);
 	}
 	
 	#image_box {
@@ -119,8 +120,15 @@
 <script>
 //Force reload of background image on each visit by appending random number to url
 //var main_element = document.getElementById('image_box');
-var main_element = document.getElementsByTagName('body').item(0);
-main_element.style.backgroundImage = "url('bg.jpg?rand=(Math.random() * 10000000)')" ;
+//var main_element = document.getElementsByTagName('body').item(0);
+//main_element.style.backgroundImage = "url('bg.jpg?rand=(Math.random() * 10000000)')";
+//main_element.style.backgroundImage = "url('bg.jpg?')" + Math.random();
+//main_element.style.backgroundImage = url('bg.jpg?rand='+ (Math.random() * 10000000));
+//main_element.style.backgroundImage = main_element.style.backgroundImage + '?' + Math.random();
+
+//"'Math.random()'";
+//alert(main_element.style.backgroundImage);
+//alert ('bg.jpg?rand='+Math.random());
 </script>
 
 </html>
