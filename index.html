@@ -24,6 +24,9 @@
 	margin:0;
 	padding:0;
 	background-color: #000;		
+	background-position: top center;
+    background-size: 100%;
+    background-repeat: no-repeat;
 	}
 	
 	#image_box {
@@ -115,7 +118,8 @@
 
 <script>
 //Force reload of background image on each visit by appending random number to url
-var main_element = document.getElementById('image_box');
+//var main_element = document.getElementById('image_box');
+var main_element = document.getElementsByTagName('body').item(0);
 main_element.style.backgroundImage = "url('bg.jpg?rand=(Math.random() * 10000000)')" ;
 </script>
 
