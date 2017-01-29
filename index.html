@@ -9,12 +9,6 @@
 
 		<meta name="description" content="Tom Leimkuhler, Berkeley, California"/>
 
-<?php 
-//set initial background image based on hour of day (1-24)
-$i = idate('G')	+ 1;
-$bgimg = "url(bg" . $i .".jpg)";
-?>
-
 <style>	
 	
 	#container { display:block; }
@@ -39,7 +33,7 @@ $bgimg = "url(bg" . $i .".jpg)";
     /*
 	background-image: <?=$bgimg?>;
 	*/
-	background-image: url(bg1.jpg);
+	background-image: url(bg.jpg);
     background-position: top center;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -110,48 +104,6 @@ $bgimg = "url(bg" . $i .".jpg)";
 	
 </style>
 
-<script type="text/javascript">
-//change background image when user clicks
-	
-var image_count = 1; //total number of background image files	
-	
-function preload_next(i) {
-var next = i + 1;
-if(next === image_count + 1){
-	next = 1;
-}
-var n = next.toString();
-var my_image = new Image();
-my_image.src = 'bg' + n + '.jpg';
-}	
-	
-window.onload = function() {
-
-var myElement = document.querySelector("#image_box");
-
-//initial background image set by php
-//var index = <?=$i?>;
-var index = 1;
-
-preload_next(index); //load next background image into browser cache
-
-myElement.addEventListener('touchend', function(e) {
-  /* on touch devices prevent delay and simulated mouse events */
-  e.preventDefault();
-  /* trigger the actual behavior we bound to the 'click' event */
-  e.target.click();
-})
-myElement.addEventListener('click', function() {
-	index = index + 1;
-	if(index === image_count + 1){  
-    	index = 1;
-	}
-    myElement.style.backgroundImage = "url(bg" + index + ".jpg)";
-    preload_next(index); //load next background image into browser cache
-
-});
-}
-</script>
 	
 </head>
 
