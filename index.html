@@ -30,10 +30,6 @@
     height: 0;
     padding: 0; /* remove any pre-existing padding, just in case */
     padding-bottom: 75%; /* for a 4:3 aspect ratio */
-    /*
-	background-image: <?=$bgimg?>;
-	*/
-	background-image: url(bg.jpg);
     background-position: top center;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -53,7 +49,7 @@
 	line-height: 26.4px;
 	line-height: 2vw;
 	text-align: left;
-	color: white;
+	color: rgba(255, 255, 121, 1.0);	
 	}
 
 	h2 {
@@ -66,11 +62,9 @@
 	line-height: 1.05em;
 	line-height: 3.2vw;
 	text-align: left;
-	color: rgba(255, 255, 121, 0.86);
+	color: white;
 	margin-left: 0.3em;
-
 	}
-	
 	
 	@media only screen and (orientation:portrait){
 
@@ -89,7 +83,6 @@
     height: 0;
     padding: 0; /* remove any pre-existing padding, just in case */
     padding-bottom: 75%; /* for a 4:3 aspect ratio */
-
     background-position: right top;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -104,9 +97,7 @@
 	
 </style>
 
-	
 </head>
-
 
 <body id="container">
 
@@ -122,5 +113,10 @@
 </center>
 </body>
 
+<script>
+//Force reload of background image on each visit by appending random number to url
+var main_element = document.getElementById('image_box');
+main_element.style.backgroundImage = "url('bg.jpg?rand=(Math.random() * 10000000)')" ;
+</script>
 
 </html>
